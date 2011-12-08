@@ -1,6 +1,9 @@
-Flickrawl is an anonymous Flickr images crawler written in Python, that let you batch download images of a specific user, tag of search result. Data parsing is based on Regex matching on raw HTML.
+Flickrwl is an anonymous Flickr images crawler written in Python, that lets you
+batch download images of a specific user, tag of search result. Data parsing is
+based on Regex matching on raw HTML.
 
-Even though there is avaiable Flickr APIs to do this more easily, I tend to do the alternative hacking on HTML code.
+Even though there is avaiable Flickr APIs to do this more easily, I tend to do
+the alternative hacking on HTML code.
 
 
 Sample Usage:
