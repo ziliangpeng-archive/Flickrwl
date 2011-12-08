@@ -8,9 +8,9 @@ the alternative hacking on HTML code.
 
 Sample Usage:
 
-  python FlickrCrawler.py user ziliangdotme
+  python flickrwl.py user ziliangdotme
 
-  python FlickrCrawler.py tag Sydney
+  python flickrwl.py tag Sydney
 
-  python FlickeCrawler.py search Lady Gaga
+  python flickrwl.py search Lady Gaga
 
