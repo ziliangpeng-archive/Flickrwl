@@ -24,6 +24,7 @@ class BasePhotoCrawler(threading.Thread):
         self.pool = ThreadPool(num_threads, BasePhotoCrawler.download_and_save_image_file)
         self.start()
         
+
     @staticmethod
     def fetch(url, maximum_try=5):
         for _ in range(maximum_try):
@@ -33,7 +34,6 @@ class BasePhotoCrawler(threading.Thread):
           except BaseException, e:
               syncPrint('Error: ' + str(e) + '\n' + 'on url: ' + url)
               # (TODO) INFO level log
-
         # (TODO) ERROR level log
         
 
@@ -62,13 +62,14 @@ class BasePhotoCrawler(threading.Thread):
                 
         photoID = BasePhotoCrawler.getPhotoId(url)
         doc = BasePhotoCrawler.fetch(url + 'sizes/')
-        pattern = r'<img[^>]+src=\"(http://\w+\.staticflickr\.com/\w+/{id}\w+\.(jpg|png))[^>]*>'.format(id=photoID)
+        pattern = r'<img[^>]+src=\"(http://\w+\.staticflickr\.com/\w+/{id}[^>]+\.(jpg|png|gif))[^>]*>'.format(id=photoID)
         try:
           m = re.search(pattern, doc).group(1)
           syncPrint('downloading   %-64s  to   %s' % (url, path))
           img = BasePhotoCrawler.fetch(m)
           open(path, "w+").write(img)
-        except:
+        except BaseException, e:
+          syncPrint('Error: ' + str(e) + '\n' + 'on url: ' + url + '\n' + 'pattern: ' + pattern + '\n' + doc)
           # (TODO) break down exception handling
           print 'Error: no regex match in %s' % url
 
