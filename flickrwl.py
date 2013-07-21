@@ -166,7 +166,7 @@ class SearchResultCrawler(BasePhotoCrawler):
     
     def __init__(self, keys):
         if type(keys).__name__ == 'str': key = str(keys).lower()
-        elif type(keys).__name__ == 'list': key = '+'.join(str(keys).lower())
+        elif type(keys).__name__ == 'list': key = '+'.join(keys).lower()
         else: syncPrint(type(keys).__name__)
         self.key = key
         super(SearchResultCrawler, self).__init__()
